@@ -11,6 +11,9 @@ export class AppComponent {
   useLetters = false;
   useNumbers = false;
   useSymbols = false;
+  letters = 'abcdefghijklmnopqrstuvwxyz';
+  numbers = '1234567890';
+  symbols = '!"#¤%&/()=?';
   password = '';
 
   onChangeLength(event: Event) {
@@ -35,11 +38,24 @@ export class AppComponent {
   }
 
   buttonClicked() {
-    console.log(`
-    Settings:
-    Use letters: ${this.useLetters}
-    Use numbers: ${this.useNumbers}
-    Use symbols: ${this.useSymbols}
-    `);
+    let passwordCharacters = '';
+
+    if (this.useLetters) {
+      passwordCharacters += this.letters;
+    }
+    if (this.useNumbers) {
+      passwordCharacters += this.numbers;
+    }
+
+    if (this.useSymbols) {
+      passwordCharacters += this.symbols;
+    }
+
+    let generatedPassword = '';
+    for (let i = 0; i < this.length; i++) {
+      const index = Math.floor(Math.random() * passwordCharacters.length);
+      generatedPassword += passwordCharacters[index];
+    }
+    this.password = generatedPassword;
   }
 }

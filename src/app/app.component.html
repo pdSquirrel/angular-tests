@@ -3,6 +3,7 @@
 <p>
   <label for="input">Password length:</label>
   <input (input)="onChangeLength($event)" />
+  {{ this.length }}
 </p>
 
 <p>
@@ -26,5 +27,5 @@
 
 <p>
   <label for="">Generated password:</label>
-  <input type="text" />
+  <input [value]="password" type="text" />
 </p>
