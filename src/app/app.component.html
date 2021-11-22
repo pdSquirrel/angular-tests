@@ -22,7 +22,12 @@
 </p>
 
 <p>
-  <button (click)="buttonClicked()">Generate</button>
+  <button
+    [disabled]="!(length && (useLetters || useNumbers || useSymbols))"
+    (click)="buttonClicked()"
+  >
+    Generate
+  </button>
 </p>
 
 <p>
